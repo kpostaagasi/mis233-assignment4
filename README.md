@@ -3,7 +3,7 @@
 Name: Kamil Postaağası  
 Student number: 2023501030
 
-Bonuses claimed: **Bonus 1: LaTeX**, **Bonus 2: Depth**, **Bonus 3: Real code** (see the sections at the end).
+Bonuses claimed: **Bonus 1: LaTeX**, **Bonus 2: Depth**, **Bonus 3: Real code**, **Bonus 4: Git repository** (see the sections at the end).
 
 ## Run
 
@@ -622,6 +622,11 @@ between the tags is never named here: it goes through `{...props}` onto `<Comp>`
 P4 in my guide. Because `{...props}` comes after `data-slot` and `data-variant`, a caller could
 override those, but `className` is taken out first and merged with `cn(...)`, so the caller's
 class is added, not replacing the base classes.
+
+## Bonus 4: Git repository
+
+https://github.com/kpostaagasi/mis233-assignment4 (public). The repository has a `.gitignore`
+that leaves out `node_modules` and the LaTeX build files.
 
 ## My own log
 
