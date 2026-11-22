@@ -1013,8 +1013,61 @@ repository has a \passthrough{\lstinline!.gitignore!} that leaves out
 
 \subsection{My own log}\label{my-own-log}
 
-TODO (Kamil): at least five real things that went wrong or surprised me
-while I ran this project, with the exact error message and what I
-learned. To be written by me after running the experiments myself.
+I ran five experiments on my MacBook (Node v24.22.1). Each one is a copy
+of my real code with one change, in
+\passthrough{\lstinline!experiments/!}, so the real files stay clean.
+Run them with \passthrough{\lstinline!npm run exp1!} to
+\passthrough{\lstinline!npm run exp5!}.
+
+\textbf{1. Assignment without parentheses}
+(\passthrough{\lstinline!experiments/exp1.mjs!}) I wrote
+\passthrough{\lstinline!\{ price \} = \{ price: 44.1 \}!} instead of
+\passthrough{\lstinline!;(\{ price \} = \{ price: 44.1 \})!}. I got
+\passthrough{\lstinline!SyntaxError: Unexpected token '='!} at
+\passthrough{\lstinline!exp1.mjs:20!}, and nothing in the file printed,
+not even pitfall 1 at the top. What I learned: a line that starts with
+\passthrough{\lstinline!\{!} is parsed as a block, so the
+\passthrough{\lstinline!=!} after it is invalid. A syntax error stops
+the file at parse time, so no line runs at all.
+
+\textbf{2. Removing the \passthrough{\lstinline!@ts-expect-error!} in
+T5} (\passthrough{\lstinline!experiments/exp2.ts!})
+\passthrough{\lstinline!npm run exp2!} gave
+\passthrough{\lstinline!error TS2339: Property 'last' does not exist on type '\{ bid: number; ask: number; \}'.!}
+at \passthrough{\lstinline!exp2.ts:43!}. What I learned:
+\passthrough{\lstinline!tsc!} finds this during type-checking.
+\passthrough{\lstinline!npm run all!} uses
+\passthrough{\lstinline!tsx!}, which removes the types without checking
+them, so the same code still runs there.
+
+\textbf{3. Turning the rejected P7 line back on}
+(\passthrough{\lstinline!experiments/exp3.tsx!})
+\passthrough{\lstinline!<Card>no title</Card>!} gave
+\passthrough{\lstinline!error TS2741: Property 'title' is missing in type '\{ children: string; \}' but required in type 'CardProps'.!}
+at \passthrough{\lstinline!exp3.tsx:90!}. What I learned: the text
+between the tags becomes the \passthrough{\lstinline!children!} prop
+(you can see it in the message), and the required
+\passthrough{\lstinline!title!} is missing, so TypeScript rejects it.
+
+\textbf{4. Removing \passthrough{\lstinline!= \{\}!} from
+\passthrough{\lstinline!placeOrder!}}
+(\passthrough{\lstinline!experiments/exp4.mjs!}) It printed
+\passthrough{\lstinline!form 11: buy 5 x BIMAS!} and then
+\passthrough{\lstinline!TypeError: Cannot destructure property 'ticker' of 'undefined' as it is undefined.!}
+at \passthrough{\lstinline!exp4.mjs:6!}. What I learned: with an
+argument there is an object to destructure.
+\passthrough{\lstinline!placeOrder()!} with no argument destructures
+\passthrough{\lstinline!undefined!}, and the
+\passthrough{\lstinline!= \{\}!} default was what prevented this.
+
+\textbf{5. Using \passthrough{\lstinline!first!} without a check}
+(\passthrough{\lstinline!experiments/exp5.ts!})
+\passthrough{\lstinline!first.toLowerCase()!} gave
+\passthrough{\lstinline!error TS18048: 'first' is possibly 'undefined'.!}
+at \passthrough{\lstinline!exp5.ts:31!}. What I learned: with
+\passthrough{\lstinline!noUncheckedIndexedAccess!} the first element of
+a \passthrough{\lstinline!string[]!} is
+\passthrough{\lstinline!string | undefined!}, because the array could be
+empty, so I need a check (or a default) first.
 
 \end{document}
