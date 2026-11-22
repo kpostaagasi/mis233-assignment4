@@ -630,6 +630,33 @@ that leaves out `node_modules` and the LaTeX build files.
 
 ## My own log
 
-TODO (Kamil): at least five real things that went wrong or surprised me while I ran this
-project, with the exact error message and what I learned. To be written by me after running
-the experiments myself.
+I ran five experiments on my MacBook (Node v24.22.1). Each one is a copy of my real code with one
+change, in `experiments/`, so the real files stay clean. Run them with `npm run exp1` to `npm run exp5`.
+
+**1. Assignment without parentheses** (`experiments/exp1.mjs`)
+I wrote `{ price } = { price: 44.1 }` instead of `;({ price } = { price: 44.1 })`.
+I got `SyntaxError: Unexpected token '='` at `exp1.mjs:20`, and nothing in the file printed,
+not even pitfall 1 at the top.
+What I learned: a line that starts with `{` is parsed as a block, so the `=` after it is invalid.
+A syntax error stops the file at parse time, so no line runs at all.
+
+**2. Removing the `@ts-expect-error` in T5** (`experiments/exp2.ts`)
+`npm run exp2` gave `error TS2339: Property 'last' does not exist on type '{ bid: number; ask: number; }'.` at `exp2.ts:43`.
+What I learned: `tsc` finds this during type-checking. `npm run all` uses `tsx`, which removes the
+types without checking them, so the same code still runs there.
+
+**3. Turning the rejected P7 line back on** (`experiments/exp3.tsx`)
+`<Card>no title</Card>` gave `error TS2741: Property 'title' is missing in type '{ children: string; }' but required in type 'CardProps'.` at `exp3.tsx:90`.
+What I learned: the text between the tags becomes the `children` prop (you can see it in the
+message), and the required `title` is missing, so TypeScript rejects it.
+
+**4. Removing `= {}` from `placeOrder`** (`experiments/exp4.mjs`)
+It printed `form 11: buy 5 x BIMAS` and then
+`TypeError: Cannot destructure property 'ticker' of 'undefined' as it is undefined.` at `exp4.mjs:6`.
+What I learned: with an argument there is an object to destructure. `placeOrder()` with no
+argument destructures `undefined`, and the `= {}` default was what prevented this.
+
+**5. Using `first` without a check** (`experiments/exp5.ts`)
+`first.toLowerCase()` gave `error TS18048: 'first' is possibly 'undefined'.` at `exp5.ts:31`.
+What I learned: with `noUncheckedIndexedAccess` the first element of a `string[]` is
+`string | undefined`, because the array could be empty, so I need a check (or a default) first.
