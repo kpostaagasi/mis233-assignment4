@@ -1,0 +1,11 @@
+\usepackage{xcolor}
+\definecolor{codebg}{RGB}{246,248,250}
+\lstset{basicstyle=\ttfamily\small,breaklines=true,breakatwhitespace=false,
+  backgroundcolor=\color{codebg},frame=single,rulecolor=\color{gray!40},
+  columns=fullflexible,keepspaces=true,showstringspaces=false,upquote=true,
+  postbreak=\mbox{\textcolor{gray}{$\hookrightarrow$}\space},
+  literate={ğ}{{\u{g}}}1 {ç}{{\c{c}}}1 {ı}{{\i}}1 {ş}{{\c{s}}}1 {ö}{{\"o}}1 {ü}{{\"u}}1}
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\footnotesize}
+\setlength{\emergencystretch}{3em}
+\sloppy

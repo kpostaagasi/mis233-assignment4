@@ -1,0 +1,142 @@
+
+> destructuring-guide@0.0.0 all
+> npm run js && npm run ts
+
+
+> destructuring-guide@0.0.0 js
+> node js/arrays.mjs && node js/objects.mjs && node js/params.mjs && node js/pitfalls.mjs && node js/depth.mjs && tsx js/props.jsx
+
+form 1: 39.8 43.5
+form 2: INTT 321 [ 'MIS 251', 'INTT 375' ]
+form 3: GARAN AKBNK
+form 4: TRY 0
+form 4b: USD 0
+form 5: ASELS 120
+form 5b: 130 120
+form 6: 58.4
+form 7: 50 120
+form 8: { ticker: 'ASELS', shares: 120, avgCost: 58.4 }
+form 9: Kamil 55
+form 10: ticker -> ASELS
+form 11: buy 5 x BIMAS
+form 11b: buy 1 x undefined
+form 11c: 0.25
+form 12: MIS 233 AA
+form 12: INTT 321 BA
+form 12b: ASELS 0.4
+form 12b: THYAO 0.35
+form 12b: BIMAS 0.25
+pitfall 1: TypeError - Cannot destructure property 'a' of 'undefined' as it is undefined.
+pitfall 2: null | no note
+pitfall 3: 44.1
+pitfall 3b: SyntaxError - Unexpected token '='
+pitfall 4: changed
+pitfall 4b: true
+pitfall 5: object a = 1 b = 2 | array x = 2 y = 1
+D1 string: B I [ 'S', 'T' ]
+D1 Set: ASELS
+D1 Map: USDTRY 34.2
+D1 generator: 40 41
+D2 Symbol.iterator called
+D2 next() call 1
+D2 next() call 2
+D2 return() called (iterator closed early)
+D2 result: 10 20
+D2 array-like: TypeError - {(intermediate value)(intermediate value)} is not iterable
+D3 default computed for ask
+D3 result: 39.9 0
+D3 uses earlier variable: 1 2
+D3 later variable: ReferenceError - Cannot access 'y' before initialization
+D4 catch: SyntaxError - Expected property name or '}' in JSON at position 2 (line 1 column 3)
+D4 for...in gives keys: ASELS
+D4 for...in gives keys: THYAO
+D4 for...of entries: ASELS 120
+D4 for...of entries: THYAO 40
+D4 assignment targets: { min: 39.8, max: 43.5 }
+D4 into array slots: [ 'x', 'y' ]
+D5 deep: BIST 22 11
+D5 two steps: BIST 22 11
+P1 A: <section><h2>Portfolio</h2>3 positions</section>
+P1 B: <section><h2>Portfolio</h2>3 positions</section>
+P1 props object: [ 'ticker', 'qty', 'children' ]
+P2 tags   : <section><h2>Note</h2>between tags</section>
+P2 attr   : <section><h2>Note</h2>as attribute</section>
+P2 both   : <section><h2>Note</h2>tags</section>
+P3 string   : <div>hello</div>
+P3 number   : <div>42</div>
+P3 zero     : <div>0</div>
+P3 element  : <div><b>bold</b></div>
+P3 several  : <div><i>a</i><i>b</i></div>
+P3 array    : <div><span>x</span><span>y</span></div>
+P3 undefined: <div></div>
+P3 null     : <div></div>
+P3 false    : <div></div>
+P3 true     : <div></div>
+P3 function : <p>Price: 44.1 TL</p>
+P3 fn raw   : <div></div>
+P4 rest     : <section id="risk" class="card"><h3>Risk</h3>low</section>
+P4 spread first : <section class="fixed">x</section>
+P4 spread last  : <section class="mine">x</section>
+P4 key      : <span>undefined</span>
+P5 props    : <article><header>Weekly report</header><main>Up 2%</main><footer>Source: BIST</footer></article>
+P5 children : <article><header>Weekly report</header><main>Up 2%</main><footer>Source: BIST</footer></article>
+P6 missing  : <span>[n/a]</span>
+P6 undefined: <span>[n/a]</span>
+P6 null     : <span>[]</span>
+P6 value    : <span>[BUY]</span>
+P7 (js, no types): <section><h2>123</h2>4</section>
+
+> destructuring-guide@0.0.0 ts
+> tsx ts/arrays.ts && tsx ts/objects.ts && tsx ts/params.ts && tsx ts/types.ts && tsx ts/props.tsx && tsx ts/depth.tsx
+
+form 1: 39.8 43.5
+form 2: INTT 321 [ 'MIS 251', 'INTT 375' ]
+form 3: GARAN AKBNK
+form 4: TRY 0
+form 5: ASELS 130 120
+form 6: 58.4
+form 7: 50
+form 8: { ticker: 'ASELS', shares: 120, avgCost: 58.4 } | owner was Kamil | trades 2
+form 9: Kamil 55
+form 10: ticker -> ASELS
+form 11: buy 5 x BIMAS
+form 11b: buy 1 x ???
+form 11c: 0.25
+form 12: MIS 233 AA
+form 12: INTT 321 BA
+form 12b: ASELS 40%
+form 12b: THYAO 35%
+form 12b: BIMAS 25%
+T1: 1
+T1 rename trap: THYAO
+T1 typed: THYAO 280.5
+T2 tuple: 44.1 ASELS
+T2 as const: number 44.1 ASELS
+T3: kchol
+T3 default: none
+T4: undefined 0
+T5: undefined
+T5 fixed: 39.9
+P1 A: <section><h2>Portfolio</h2>3 positions</section>
+P1 B: <section><h2>Portfolio</h2>3 positions</section>
+P2 tags: <section><h2>Note</h2>between tags</section>
+P2 attr: <section><h2>Note</h2>as attribute</section>
+P3 string: <div>hello</div>
+P3 number: <div>42</div>
+P3 element: <div><b>bold</b></div>
+P3 undefined: <div></div>
+P3 null: <div></div>
+P3 false: <div></div>
+P3 function: <p>Price: 44.1 TL</p>
+P4 rest: <section id="risk" class="card"><h3>Risk</h3>low</section>
+P4 order: <section class="mine">x</section>
+P5 props: <article><header>Weekly report</header><main>Up 2%</main><footer>Source: BIST</footer></article>
+P5 children: <article><header>Weekly report</header><main>Up 2%</main><footer>Source: BIST</footer></article>
+P6 undefined: <span>[n/a]</span>
+P6 null: <span>[]</span>
+P7 PropsWithChildren: <div><em>Watchlist</em>KCHOL, SISE</div>
+P7 ComponentProps: <button type="button" disabled="">Buy</button>
+D6 First/Rest: ASELS [ 58.4, 1200 ]
+D6 OwnerOf: { name: 'Kamil', account: 'Midas' }
+D7 Parameters: THYAO 3 -> buy 3 x THYAO
+D8 generic component: <ul><li>ASELS: 120</li><li>THYAO: 40</li></ul>
