@@ -7,7 +7,12 @@
     "js": "node js/arrays.mjs && node js/objects.mjs && node js/params.mjs && node js/pitfalls.mjs && node js/depth.mjs && tsx js/props.jsx",
     "ts": "tsx ts/arrays.ts && tsx ts/objects.ts && tsx ts/params.ts && tsx ts/types.ts && tsx ts/props.tsx && tsx ts/depth.tsx",
     "check": "tsc --noEmit",
-    "all": "npm run js && npm run ts"
+    "all": "npm run js && npm run ts",
+    "exp1": "node experiments/exp1.mjs",
+    "exp2": "tsc -p experiments/tsconfig.exp2.json",
+    "exp3": "tsc -p experiments/tsconfig.exp3.json",
+    "exp4": "node experiments/exp4.mjs",
+    "exp5": "tsc -p experiments/tsconfig.exp5.json"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
